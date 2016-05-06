@@ -1,0 +1,25 @@
+{
+  "name": "Angular Test Series 01",
+  "description": "",
+  "main": "",
+  "moduleType": [],
+  "keywords": [
+    "angular",
+    "bootstrap",
+    "requirejs",
+    "lazy",
+    "loading"
+  ],
+  "authors": [
+    "PRANAV KAND"
+  ],
+  "license": "MIT",
+  "homepage": "",
+  "dependencies": {
+    "angular": "angularjs#~1.5.5",
+    "bootstrap": "~3.3.6",
+    "font-awesome": "~4.6.1",
+    "angular-ui-router": "~0.2.18",
+    "requirejs": "~2.2.0"
+  }
+}
