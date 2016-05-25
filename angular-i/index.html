@@ -1,0 +1,90 @@
+<!doctype html>
+<html ng-app="testApp">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <title>Angular Test</title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <!-- Place favicon.ico in the root directory -->
+  
+  <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+
+<body>
+<style>
+    padding:5px;
+</style>
+    
+     <script type="text/javascript" src="js/angular.js"></script>
+     <script type="text/javascript" src="js/angular-css.min.js"></script>
+    <div ng-controller="testController">
+        <em>Core Module </em>
+        <div>
+            <label>Name : </label><input type="text" ng-model="name"/>
+        </div>
+        <p ng-if="name">Your name is {{name}}</p>
+        <button ng-click="getMyName()">Click Here</button>
+        <button ng-click="getMyDt()">Fetch Details</button>
+    </div>
+    <div ng-controller="module1Ctrl">
+        <em>Module 1 </em>
+        <div style="font-size:large;font-weight:bold;">
+                Module 1 Controller
+        </div>
+        
+    </div>
+   
+ 
+    <script type="text/javascript">
+         var app = angular.module("testApp", ["module1","angularCSS"]);
+        
+        app.value("testval","pranav");
+        app.value("somefunction",{
+            "test":function(){
+            alert("Hello");            
+        }            
+        });
+        app.constant("var12","abcd");
+        app.config(function(var12){
+            console.log("Var12 : "+var12);
+        });
+        app.config(function($cssProvider) {
+              angular.extend($cssProvider.defaults, {
+                container: 'head',
+                method: 'append',
+                persist: true,
+                preload: true,
+                bustCache: true
+              });
+
+            });
+        app.controller("testController",function($scope,$css){
+            $scope.tmp_check = "prod";
+            if($scope.tmp_check == "prod")
+             $css.add('js/bootstrap-3.3.6-dist/css/bootstrap.min.css','style.css');
+            else
+             $css.add('js/bootstrap-3.3.6-dist/css/bootstrap.css');
+            $scope.getMyName = function(){
+                    alert("Your name is : "+$scope.name);
+            }
+            
+            $scope.getMyDt = function(somefunction){
+                somefunction.test;
+            }
+            
+        });
+        
+    </script>
+    <script type="text/javascript">
+            var app = angular.module("module1", []);
+        
+            app.controller("module1Ctrl",function($scope,$log){
+               $log.info("Module 1 Controller...");
+            });
+    </script>
+</body>
+</html>
